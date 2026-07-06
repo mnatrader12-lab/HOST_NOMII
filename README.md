@@ -48,6 +48,36 @@ webvulnscan -u https://example.com --no-xss --no-sqli
 # Custom timeout / threads
 webvulnscan -u https://example.com -t 20 --threads 20
 ```
+sudo bash install.sh
+# Iske baad 4 commands mil jayen gii:
+webvulnscan   -u URL       # full vulns
+headerscanner -u URL       # headers + grade
+techdetector  -u URL       # tech stack
+portsubscan   -t DOMAIN    # ports + subs
+///////////////////////////////////
+# Step 1: Recon
+portsubscan -t target.com --full -o recon.json
+
+# Step 2: Tech stack pata karo
+techdetector -u https://www.target.com -o tech.json
+
+# Step 3: Headers check
+headerscanner -u https://www.target.com --html header_report.html
+
+# Step 4: Full vulnerability scan
+webvulnscan -u https://www.target.com --full -o vuln_report.html
+
+
+FULL CHECK
+python3 portsubscan.py -t example.com --full
+
+Top 100 / Top 1000 / All 65535 ports scan
+Banner grabbing — service version detection
+Subdomain enumeration — 248 built-in words + custom wordlist
+DNS resolution — A, AAAA, MX, NS, TXT, CNAME
+HTTP probe on subdomains — status, title, server header
+Threaded (80 workers default) — fast scans
+
 
 ## 🧾 Sample Output
 
